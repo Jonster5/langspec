@@ -1,0 +1,56 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "lspec",
+	"patterns": [
+		{
+			"name": "comment.line",
+			"begin": "\\:#",
+			"end": "\\n"
+		},
+		{ "include": "#escape" },
+		{ "include": "#node-def" },
+		{ "include": "#tok-def" },
+		{ "include": "#ref" }
+	],
+	"repository": {
+		"node-def": {
+			"match": "(?<!\\\\\\w*)([A-Z][a-zA-Z]*)\\:",
+			"captures": {
+				"1": { "name": "entity.name.class" }
+			}
+		},
+		"tok-def": {
+			"begin": "^(?<!\\\\\\w*)(:)?([a-z][a-zA-Z]*)\\s*(\\()",
+			"beginCaptures": {
+				"1": { "name": "keyword.control" },
+				"2": { "name": "constant.numeric" },
+				"3": { "name": "keyword.control" }
+			},
+			"end": "(\\))",
+			"endCaptures": {
+				"1": { "name": "keyword.control" }
+			},
+			"patterns": [{ "include": "source.js.regexp" }]
+		},
+		"ref": {
+			"name": "meta.selector",
+			"match": "(?<=\\s)(:)(?:([a-z][a-zA-Z]*)|([A-Z][a-zA-Z]*)|(?:(\\[)[^\\]\\s]*(\\])))(?:(\\[)[^\\]]*(\\]))?(\\?)?",
+			"captures": {
+				"1": { "name": "keyword.control" },
+				"2": { "name": "constant.numeric" },
+				"3": { "name": "entity.name.function" },
+				"4": { "name": "keyword.control" },
+				"5": { "name": "keyword.control" },
+				"6": { "name": "keyword.operator" },
+				"7": { "name": "keyword.operator" },
+				"8": { "name": "keyword.operator" }
+			}
+		},
+		"escape": {
+			"comment": "Escape pattern",
+			"name": "constant.character.escape",
+			"match": "\\\\."
+		}
+	},
+	"scopeName": "source.langspec"
+}

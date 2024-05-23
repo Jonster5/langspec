@@ -1,0 +1,25 @@
+{
+  "name": "langspec",
+  "displayName": "langspec-highlight",
+  "description": "langspec highlighting",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "langspec",
+      "aliases": ["lspec", "langspec"],
+      "extensions": [".langspec",".lspec"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "langspec",
+      "scopeName": "source.langspec",
+      "path": "./syntaxes/langspec.tmLanguage.json"
+    }]
+  }
+}
