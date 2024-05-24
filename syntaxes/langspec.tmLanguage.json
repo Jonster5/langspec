@@ -34,16 +34,17 @@
 		},
 		"ref": {
 			"name": "meta.selector",
-			"match": "(?<=\\s)(:)(?:([a-z][a-zA-Z]*)|([A-Z][a-zA-Z]*)|(?:(\\[)[^\\]\\s]*(\\])))(?:(\\[)[^\\]]*(\\]))?(\\?)?",
+			"match": "(?<=\\s)(:)(?:([a-z][a-zA-Z]*)|([A-Z][a-zA-Z]*)|(?:(\\[)[^\\]\\s]*(\\]))|(\\+\\+|\\-\\-))(?!:)(?:(\\[)[^\\]]*(\\]))?(\\?)?(?=\\s)",
 			"captures": {
 				"1": { "name": "keyword.control" },
 				"2": { "name": "constant.numeric" },
 				"3": { "name": "entity.name.function" },
 				"4": { "name": "keyword.control" },
 				"5": { "name": "keyword.control" },
-				"6": { "name": "keyword.operator" },
+				"6": { "name": "keyword.control" },
 				"7": { "name": "keyword.operator" },
-				"8": { "name": "keyword.operator" }
+				"8": { "name": "keyword.operator" },
+				"9": { "name": "keyword.operator" }
 			}
 		},
 		"escape": {
